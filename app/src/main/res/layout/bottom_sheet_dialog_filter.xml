@@ -40,12 +40,6 @@
             android:text="@string/filter_weight_desc" />
 
         <RadioButton
-            android:id="@+id/radioButtonLocation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/filter_location" />
-
-        <RadioButton
             android:id="@+id/radioButtonYear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

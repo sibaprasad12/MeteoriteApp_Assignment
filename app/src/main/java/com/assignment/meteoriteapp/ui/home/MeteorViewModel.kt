@@ -9,7 +9,6 @@ import com.assignment.meteoriteapp.network.ResponseState
 import com.assignment.meteoriteapp.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
-import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -40,11 +39,10 @@ class MeteorViewModel  @Inject constructor(
         val DEFAULT = -1
         val FILTER_BY_WEIGHT = 0
         val FILTER_BY_WEIGHT_DESC = 1
-        val FILTER_BY_LOCATION = 2
-        val FILTER_BY_YEAR = 3
-        val FILTER_BY_YEAR_DESC = 4
-        val FILTER_BY_FALL = 5
-        val FILTER_BY_NAME = 6
+        val FILTER_BY_YEAR = 2
+        val FILTER_BY_YEAR_DESC = 3
+        val FILTER_BY_FALL = 4
+        val FILTER_BY_NAME = 5
     }
 
     fun getMeteors() = liveData(Dispatchers.IO) {
@@ -103,12 +101,6 @@ class MeteorViewModel  @Inject constructor(
             filterType = filter
             meteorsListByPage.sortedByDescending {
                 it.mass.toDouble()
-            }
-        }
-        FILTER_BY_LOCATION -> {
-            filterType = filter
-            meteorsListByPage.sortedBy {
-                it.reclat.toDouble()
             }
         }
         FILTER_BY_YEAR -> {

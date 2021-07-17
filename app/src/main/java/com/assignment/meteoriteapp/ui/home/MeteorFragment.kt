@@ -100,7 +100,6 @@ class MeteorFragment : Fragment(), OnMeteorClickListener, SwipeRefreshLayout.OnR
             filterType = when (checkedId) {
                 R.id.radioButtonWeight -> MeteorViewModel.FILTER_BY_WEIGHT
                 R.id.radioButtonWeightDesc -> MeteorViewModel.FILTER_BY_WEIGHT_DESC
-                R.id.radioButtonLocation -> MeteorViewModel.FILTER_BY_LOCATION
                 R.id.radioButtonYear -> MeteorViewModel.FILTER_BY_YEAR
                 R.id.radioButtonYearDesc -> MeteorViewModel.FILTER_BY_YEAR_DESC
                 R.id.radioButtonFall -> MeteorViewModel.FILTER_BY_FALL

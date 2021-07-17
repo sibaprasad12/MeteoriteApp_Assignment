@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">MeteoriteApp</string>
+    <string name="nasa_api_key">iDv6ms0CylG2ULxFFlDiFKoiCe8r91ky268nPCIR</string>
+    <string name="url">https://api.nasa.gov/planetary/apod?api_key=iDv6ms0CylG2ULxFFlDiFKoiCe8r91ky268nPCIR</string>
+    <string name="metero">Meteors</string>
+    <string name="favorite_meteor">Favorite</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_meteor">Meteor</string>
+    <string name="title_favourites">Favourite Meteor</string>
+    <string name="savedMeteorList">Saved Meteor List</string>
+
+    <string name="save">Save</string>
+    <string name="no_internet">No Internet connection</string>
+    <string name="error">Error</string>
+    <string name="google_maps_key">AIzaSyD1j2D9lLZymTCp38GvEbZUFgKH3d_4MM4</string>
+    <string name="title_activity_meteor">MainActivity</string>
+    <string name="filter_weight">Weight Ascending</string>
+    <string name="filter_weight_desc">Weight Descending</string>
+    <string name="filter_year">Year Ascending</string>
+    <string name="filter_year_desc">Year Descending</string>
+    <string name="filter_location">Location</string>
+    <string name="filter_fall">Fall Status</string>
+    <string name="filter_title">Filter Meteors</string>
+    <string name="filter">Filter</string>
+    <string name="filter_name">Name</string>
+    <string name="apply_filter">Apply Filter</string>
+</resources>

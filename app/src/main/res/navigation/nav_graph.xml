@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.assignment.meteoriteapp.ui.home.MeteorFragment"
+        android:label="@string/title_meteor"
+        tools:layout="@layout/fragment_meteor">
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_favourites"
+            app:destination="@id/navigation_favourites" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_favourites"
+        android:name="com.assignment.meteoriteapp.ui.favourite.FavouriteMeteorFragment"
+        android:label="@string/title_favourites"
+        tools:layout="@layout/fragment_favourite_meteor" />
+
+</navigation>

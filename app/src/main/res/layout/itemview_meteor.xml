@@ -1,0 +1,143 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="meteor"
+            type="com.assignment.meteoriteapp.data.Meteor" />
+
+        <variable
+            name="isNormalMeteorFragment"
+            type="Boolean" />
+
+        <variable
+            name="listener"
+            type="com.assignment.meteoriteapp.controllers.OnMeteorClickListener" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0.0px"
+        android:elevation="8dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="10dp"
+        app:cardPreventCornerOverlap="false">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="3dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvMeteorName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="@{`Meteor Name : ` + meteor.name}"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Meteor Name" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvMeteorMass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:text="@{`Mass : ` + meteor.mass + ` Kg`}"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvMeteorName"
+                tools:text="Meteor Weight" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvFallStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:text="@{`Fall Status : ` + meteor.fall}"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvMeteorName"
+                tools:text="Meteor Fall Status" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvMeteorrecLat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:text="@{`Lat : ` + meteor.reclat}"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvMeteorMass"
+                tools:text="Meteor Latttitude" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvMeteorreclong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:text="@{`Long : ` + meteor.reclong}"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvMeteorMass"
+                tools:text="Meteor Longitude" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvFallYear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:text="@{`Date : ` + meteor.getDateTime}"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvMeteorrecLat"
+                tools:text="Meteor Fall Year" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvMeteorMap"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:layout_marginEnd="2dp"
+                android:background="@drawable/rounded_button"
+                android:drawableLeft="@drawable/ic_location"
+                android:onClick="@{() -> listener.onMeteorMapClick(meteor)}"
+                android:padding="@dimen/dimen_10dp"
+                android:text="         Map"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toStartOf="@+id/tvMeteorFevoriteOrDelete"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvFallYear" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvMeteorFevoriteOrDelete"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:background="@drawable/rounded_button"
+                android:drawableStart="@{meteor.isFavorite > 0 ? @drawable/ic_delete : @drawable/ic_favorite }"
+                android:onClick="@{() -> listener.onFevoriteClick(meteor)}"
+                android:padding="@dimen/dimen_10dp"
+                android:text="@{ isNormalMeteorFragment ? meteor.isFavorite > 0 ? `        Added To Favourite` : `           Favourite` : meteor.isFavorite > 0 ? `        Remove` : `           Favourite` }"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tvMeteorMap"
+                app:layout_constraintTop_toBottomOf="@+id/tvFallYear" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</layout>

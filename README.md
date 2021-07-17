@@ -1,5 +1,7 @@
 # MeteoriteApp_assignment
 
+>> Check the screenshots and GIF image of the app at the bottom of the page
+
 ## [Download APK](https://github.com/sibaprasad12/MeteoriteApp_assignment/blob/main/app/apk/MeteoriteApp.apk)
 ## Assignment details
 ● The data points are available via the NASA API:   

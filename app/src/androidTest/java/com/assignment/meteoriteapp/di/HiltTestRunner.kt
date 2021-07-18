@@ -1,4 +1,4 @@
-package com.assignment.meteoriteapp
+package com.assignment.meteoriteapp.di
 
 import android.app.Application
 import android.content.Context

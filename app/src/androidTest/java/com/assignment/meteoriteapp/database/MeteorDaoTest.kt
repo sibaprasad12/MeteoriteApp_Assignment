@@ -2,7 +2,7 @@ package com.assignment.meteoriteapp.database
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.filters.SmallTest
-import com.assignment.meteoriteapp.data.TestMeteorData
+import com.assignment.meteoriteapp.testData.TestMeteorData
 import com.google.common.truth.Truth.assertThat
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest

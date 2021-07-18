@@ -1,6 +1,6 @@
 package com.assignment.meteoriteapp.ui.data
 
-import com.assignment.meteoriteapp.data.Meteor
+import com.assignment.meteoriteapp.testData.Meteor
 
 
 /**
@@ -14,9 +14,10 @@ class TestData {
 
         fun getMeteorList() : ArrayList<Meteor>{
             val list = ArrayList<Meteor>()
-            list.add(getTestData("name1"))
-            list.add(getTestData("name3"))
-            list.add(getTestData("name2"))
+            list.add(getTestData("efgh", "101", "2001-01-03", 0))
+            list.add(getTestData("abcd", "100", "2000-01-03", 1))
+            list.add(getTestData("mnop", "103", "2003-01-03", 1))
+            list.add(getTestData("ijkl", "102", "2002-01-03", 1))
             return list
         }
 

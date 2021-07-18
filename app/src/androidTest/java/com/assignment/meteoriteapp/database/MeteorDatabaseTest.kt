@@ -1,16 +1,13 @@
-package com.assignment.meteoriteapp.ui
+package com.assignment.meteoriteapp.database
 
 
 import android.content.Context
 import android.util.Log
 import androidx.room.Room
-import androidx.test.core.app.ApplicationProvider
-import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.assignment.meteoriteapp.data.Meteor
-import com.assignment.meteoriteapp.data.TestMeteorData
-import com.assignment.meteoriteapp.database.AppDatabase
-import com.assignment.meteoriteapp.database.MeteorDao
+import com.assignment.meteoriteapp.testData.Meteor
+import com.assignment.meteoriteapp.testData.TestMeteorData
 import com.google.common.truth.Truth.assertThat
+import io.mockk.mockk
 import junit.framework.TestCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -19,7 +16,6 @@ import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
-import org.junit.runner.RunWith
 import java.io.IOException
 
 /**
@@ -28,8 +24,7 @@ import java.io.IOException
  * sp.dobest@gmail.com
  */
 
-@RunWith(AndroidJUnit4::class)
-class DatabaseTest : TestCase() {
+class MeteorDatabaseTest : TestCase() {
 
     private lateinit var meterDao: MeteorDao
     private lateinit var db: AppDatabase
@@ -38,7 +33,7 @@ class DatabaseTest : TestCase() {
     @Before
     @Throws(Exception::class)
     fun setUpBefore() {
-        context = ApplicationProvider.getApplicationContext()
+        context = mockk<Context>()
         db = Room.inMemoryDatabaseBuilder(context, AppDatabase::class.java).build()
         meterDao = db.meteorDao()
     }
@@ -50,7 +45,7 @@ class DatabaseTest : TestCase() {
     }
 
     @Test
-    fun writeAndReadLanguage() = runBlocking {
+    fun writeAndReadMeteorData() = runBlocking {
         val meteorInsert: Meteor = TestMeteorData.getTestData("abcd")
         meterDao.insertMeteor(meteorInsert)
         val meteor = meterDao.getMeteorByName("abcd")
@@ -64,7 +59,6 @@ class DatabaseTest : TestCase() {
             val meteorInsert: Meteor = TestMeteorData.getTestData("abcd")
             meterDao.insertMeteor(meteorInsert)
             val meteor = meterDao.getMeteorByName("abcd")
-//            assertThat(meteorInsert.name, equalTo(meteor?.name))
             assertThat(meteorInsert.name == meteor?.name).isTrue()
         } catch (e: java.lang.Exception) {
             Log.i("MeteorViewModelUiTest", e.message!!)
@@ -79,7 +73,7 @@ class DatabaseTest : TestCase() {
                 val meteorInsert: Meteor = TestMeteorData.getTestData("abcd")
                 meterDao.insertMeteor(meteorInsert)
                 val meteorList = meterDao.getAllSavedMeteor()
-                // assertTrue(meteorList.contains(meteorInsert))
+                assertTrue(meteorList.contains(meteorInsert))
             } catch (e: java.lang.Exception) {
                 Log.i("MeteorViewModelUiTest", e.message!!)
             }
@@ -93,7 +87,7 @@ class DatabaseTest : TestCase() {
             val meteorInsert: Meteor = TestMeteorData.getTestData("abcd", isfavourite = 0)
             meterDao.insertMeteor(meteorInsert)
             val meteorList = meterDao.getAllFavoriteMeteor()
-            // assertFalse(meteorList.contains(meteorInsert))
+            assertFalse(meteorList.contains(meteorInsert))
         } catch (e: java.lang.Exception) {
             Log.i("MeteorViewModelUiTest", e.message!!)
         }
@@ -105,7 +99,7 @@ class DatabaseTest : TestCase() {
         try {
             meterDao.clearMeteorTable()
             val meteorList = meterDao.getAllFavoriteMeteor()
-            // assertTrue(meteorList.isEmpty())
+            assertTrue(meteorList.isEmpty())
         } catch (e: java.lang.Exception) {
             Log.i("MeteorViewModelUiTest", e.message!!)
         }
@@ -118,7 +112,7 @@ class DatabaseTest : TestCase() {
             val meteorInsert: Meteor = TestMeteorData.getTestData("abcd", isfavourite = 1)
             meterDao.insertMeteor(meteorInsert)
             val meteorList = meterDao.getAllFavoriteMeteor()
-//            assertTrue(meteorList.contains(meteorInsert))
+            assertTrue(meteorList.contains(meteorInsert))
         } catch (e: java.lang.Exception) {
             Log.i("MeteorViewModelUiTest", e.message!!)
         }
@@ -133,24 +127,59 @@ class DatabaseTest : TestCase() {
             meterDao.insertMeteor(meteorInsert)
             meterDao.insertMeteor(meteorInsert)
             val meteorList = meterDao.getAllFavoriteMeteor()
-//            assertTrue(meteorList.size == 1)
+            assertTrue(meteorList.size == 1)
         } catch (e: java.lang.Exception) {
             Log.i("MeteorViewModelUiTest", e.message!!)
-//            assertTrue(true)
+            assertTrue(true)
         }
     }
 
-    fun testGetErrorMessage() {
+    @Test
+    fun testFetchMeteorsByPage() = runBlocking {
+        try {
+            val limit = 3
+            meterDao.clearMeteorTable()
+            val meteorList = TestMeteorData.getMeteorList()
+            meterDao.insertAllMeteors(meteorList)
 
+            val meteorListFromDatabase = meterDao.getFavoriteMeteorsByPage(limit, 0)
+            assertTrue(meteorListFromDatabase.size == 3)
+        } catch (e: java.lang.Exception) {
+            Log.i("MeteorViewModelUiTest", e.message!!)
+        }
     }
 
-    fun testIsValidMeteor() {}
+    @Test
+    fun testGetAllFavouriteMeteors() = runBlocking {
+        try {
+            meterDao.clearMeteorTable()
+            val meteorFavouriteList = TestMeteorData.getFavouriteMeteorList()
+            meterDao.insertAllMeteors(meteorFavouriteList)
 
-    fun testIsValidMeteorList() {}
+            val favouriteListFromDatabase = meterDao.getAllFavoriteMeteor()
+            assertTrue(meteorFavouriteList.size == favouriteListFromDatabase.size)
+        } catch (e: java.lang.Exception) {
+            Log.i("MeteorViewModelUiTest", e.message!!)
+        }
+    }
 
-    fun testFetchMeteorsByPage() {}
+    @Test
+    fun testRemoveFavoriteMeteors() = runBlocking {
+        try {
+            meterDao.clearMeteorTable()
+            val meteorInsertFavourite: Meteor =
+                TestMeteorData.getTestData("favourite", isfavourite = 1)
+            val meteorInsert: Meteor = TestMeteorData.getTestData("not favourite", isfavourite = 0)
+            meterDao.insertMeteor(meteorInsertFavourite)
+            meterDao.insertMeteor(meteorInsert)
 
-    fun testGetAllFavouriteMeteors() {}
-
-    fun testRemoveFavoriteMeteors() {}
+            val meteorList = meterDao.getAllFavoriteMeteor()
+            val favourite = meterDao.getMeteorByName("favourite")
+            assertTrue(meteorList.size == 1)
+            assertTrue(favourite?.name == "favourite")
+        } catch (e: java.lang.Exception) {
+            Log.i("MeteorViewModelUiTest", e.message!!)
+            assertTrue(true)
+        }
+    }
 }

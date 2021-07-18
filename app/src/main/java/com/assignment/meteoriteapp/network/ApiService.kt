@@ -1,7 +1,6 @@
 package com.assignment.meteoriteapp.network
 
-import com.assignment.meteoriteapp.data.Meteor
-import kotlinx.coroutines.flow.Flow
+import com.assignment.meteoriteapp.testData.Meteor
 import retrofit2.http.GET
 
 /**

@@ -114,11 +114,10 @@ dependencies {
 
     // For instrumented tests.
     androidTestImplementation 'com.google.dagger:hilt-android-testing:2.28-alpha'
-    // ...with Kotlin.
-//    kaptAndroidTest 'com.google.dagger:hilt-android-compiler:2.28-alpha'
-    // ...with Java.
     androidTestAnnotationProcessor 'com.google.dagger:hilt-android-compiler:2.28-alpha'
     kaptTest("com.google.dagger:hilt-android-compiler:2.34.1-beta")
-
-
+    //MockK
+    def mockk_version = "1.10.0"
+    testImplementation "io.mockk:mockk:$mockk_version"
+    androidTestImplementation "io.mockk:mockk-android:$mockk_version"
 }

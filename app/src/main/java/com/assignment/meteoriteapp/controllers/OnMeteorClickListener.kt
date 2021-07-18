@@ -1,6 +1,6 @@
 package com.assignment.meteoriteapp.controllers
 
-import com.assignment.meteoriteapp.data.Meteor
+import com.assignment.meteoriteapp.testData.Meteor
 
 
 /**

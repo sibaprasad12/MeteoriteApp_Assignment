@@ -1,34 +1,34 @@
 package com.assignment.meteoriteapp.ui.favourite
 
-import android.content.Context
-import android.util.Log
-import com.assignment.meteoriteapp.data.Meteor
-import com.assignment.meteoriteapp.database.AppDatabase
-import com.assignment.meteoriteapp.database.DatabaseClient
-import com.assignment.meteoriteapp.database.MeteorDao
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
+import com.assignment.meteoriteapp.testData.Meteor
 import com.assignment.meteoriteapp.ui.data.TestData
-import junit.framework.TestCase
-import kotlinx.coroutines.runBlocking
+import com.assignment.meteoriteapp.ui.home.MeteorRepository
+import com.assignment.meteoriteapp.ui.home.MeteorViewModel
+import io.mockk.mockk
+import io.mockk.spyk
 import org.junit.After
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
-import org.mockito.Mock
+import org.junit.runner.RunWith
+import org.junit.runners.JUnit4
 
-class FavoriteMeteorViewModelTest {
 
-    @Mock
-    private lateinit var mockApplicationContext: Context
+@RunWith(JUnit4::class)
+internal class FavoriteMeteorViewModelTest {
 
-    private lateinit var meterDao: MeteorDao
-    private lateinit var db: AppDatabase
-
-    // private lateinit var viewModel: FavouriteMeteorViewModel
+    private lateinit var viewModel: FavouriteMeteorViewModel
+    private lateinit var meteoriewModel: MeteorViewModel
+    private lateinit var repository: MeteorRepository
 
     @Before
     @Throws(Exception::class)
     fun setUpBefore() {
-        db = DatabaseClient.getInstance(mockApplicationContext)?.getAppDatabase()!!
-        meterDao = db.meteorDao()
+        repository = mockk<MeteorRepository>()
+        meteoriewModel = MeteorViewModel(null, repository)
+        viewModel = FavouriteMeteorViewModel(null, repository)
     }
 
     @After
@@ -37,35 +37,37 @@ class FavoriteMeteorViewModelTest {
     }
 
     @Test
-    @Throws(Exception::class)
-    fun readWriteMeteorListContains() = runBlocking {
-        try {
-            val meteorInsert: Meteor = TestData.getTestData("abcd")
-            meterDao.insertMeteor(meteorInsert)
-            val meteorList = meterDao.getAllSavedMeteor()
-            TestCase.assertTrue(meteorList.contains(meteorInsert))
-        } catch (e: java.lang.Exception) {
-            Log.i("MeteorViewModelUiTest", e.message!!)
-        }
-    }
+    fun insertAndCheckList() {
+//        viewModel.favouriteMeteorList.observeForever {
+//            Log.i("TAG", "ABCD")
+//        }
+       /* val meteor = TestData.getTestData("test")
+        meteoriewModel.insertFavoriteMeteors(meteor)
+        viewModel.fetchMeteorsByPage()
+
+        Mockito.`when`(viewModel.fetchMeteorsByPage())*/
 
 
-    @Test
-    fun countryCodeValidator_correctContryCode_returnTrue() {
-//        Assert.assertTrue(viewModel.isValidMeteor(Meteor()))
-//        Assert.assertTrue(viewModel.isValidCountry("gh"))
-//        Assert.assertTrue(viewModel.isValidCountry("in"))
+        val mutableLiveData = MutableLiveData<Meteor>()
+        val meteorData = TestData.getTestData("test")
+        mutableLiveData.postValue(meteorData)
+
+        assertEquals(meteorData.name, mutableLiveData.value?.name)
+
     }
 
-    @Test
-    fun validMeteorList() {
-//        val countryList = emptyList<Meteor>()
-//        Assert.assertFalse(viewModel.isValidMeteorList(countryList))
-//        val meteor = TestData.getTestData("abcd")
-//        val nonEMptyCountryList = ArrayList<Meteor>()
-//        nonEMptyCountryList.add(meteor)
-//        Assert.assertTrue(viewModel.isValidMeteorList(nonEMptyCountryList))
-    }
+    /* @Test
+     @Throws(Exception::class)
+     fun readWriteMeteorListContains() = runBlocking {
+         try {
+             val meteorInsert: Meteor = TestData.getTestData("abcd")
+             meterDao.insertMeteor(meteorInsert)
+             val meteorList = meterDao.getAllSavedMeteor()
+             TestCase.assertTrue(meteorList.contains(meteorInsert))
+         } catch (e: java.lang.Exception) {
+             Log.i("MeteorViewModelUiTest", e.message!!)
+         }
+     }*/
 
     @Test
     fun onSaveButtonClickTest() {
@@ -134,5 +136,6 @@ class FavoriteMeteorViewModelTest {
     fun removeFavoriteMeteors() {
     }
 
-
+    private fun createMeteorObserver(): Observer<List<Meteor>> =
+        spyk(Observer { })
 }

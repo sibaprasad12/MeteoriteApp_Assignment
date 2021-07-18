@@ -1,4 +1,4 @@
-package com.assignment.meteoriteapp.data
+package com.assignment.meteoriteapp.testData
 
 import android.os.Parcelable
 import androidx.annotation.Keep

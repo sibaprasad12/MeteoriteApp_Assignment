@@ -1,7 +1,7 @@
 package com.assignment.meteoriteapp.database
 
 import androidx.room.*
-import com.assignment.meteoriteapp.data.Meteor
+import com.assignment.meteoriteapp.testData.Meteor
 
 
 /**

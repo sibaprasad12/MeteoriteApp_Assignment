@@ -112,9 +112,9 @@ class MeteorFragmentUiTest {
 
     @Test
     @Throws(InterruptedException::class)
-    fun testGetWeatherList() {
+    fun testGetMeteorList() {
 
-       /* weatherViewModel.fetchMeteorsByPage(instrumentationCtx, "London")
+       /* meteorViewModel.fetchMeteorsByPage(instrumentationCtx, "London")
 
         assertTrue(!rule.activity.isFinishing)
 

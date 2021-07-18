@@ -1,26 +1,14 @@
 package com.assignment.meteoriteapp.ui.home
 
 import android.content.Context
-import android.util.Log
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.assignment.meteoriteapp.data.Meteor
-import com.assignment.meteoriteapp.data.TestMeteorData
 import com.assignment.meteoriteapp.database.AppDatabase
 import com.assignment.meteoriteapp.database.DatabaseClient
 import com.assignment.meteoriteapp.database.MeteorDao
-import com.assignment.meteoriteapp.network.ApiHelper
-import com.assignment.meteoriteapp.network.RetrofitBuilder
 import junit.framework.TestCase
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import org.hamcrest.CoreMatchers.equalTo
-import org.hamcrest.MatcherAssert.assertThat
 import org.junit.After
 import org.junit.Before
-import org.junit.Test
 import org.junit.runner.RunWith
 import java.io.IOException
 

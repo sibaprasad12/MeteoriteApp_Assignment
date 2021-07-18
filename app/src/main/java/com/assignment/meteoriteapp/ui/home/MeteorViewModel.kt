@@ -4,7 +4,7 @@ import android.content.Context
 import android.widget.Toast
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
-import com.assignment.meteoriteapp.data.Meteor
+import com.assignment.meteoriteapp.testData.Meteor
 import com.assignment.meteoriteapp.network.ResponseState
 import com.assignment.meteoriteapp.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -24,7 +24,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MeteorViewModel  @Inject constructor(
-    @ApplicationContext private val application: Context,
+    @ApplicationContext private val application: Context?,
     private val meteorRepository: MeteorRepository
 ) :
     BaseViewModel() {
@@ -32,7 +32,7 @@ class MeteorViewModel  @Inject constructor(
     private var lastPosition = 0
     private var filterType = DEFAULT
     private var meteorsList: List<Meteor> = listOf()
-    private var meteorsListByPage = ArrayList<Meteor>()
+    var meteorsListByPage = ArrayList<Meteor>()
     private var meteorListLoadMore: List<Meteor> = listOf()
 
     companion object {

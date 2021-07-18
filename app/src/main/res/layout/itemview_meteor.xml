@@ -6,7 +6,7 @@
 
         <variable
             name="meteor"
-            type="com.assignment.meteoriteapp.data.Meteor" />
+            type="com.assignment.meteoriteapp.testData.Meteor" />
 
         <variable
             name="isNormalMeteorFragment"

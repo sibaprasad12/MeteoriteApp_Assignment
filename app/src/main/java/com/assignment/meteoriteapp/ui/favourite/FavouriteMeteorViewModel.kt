@@ -3,7 +3,7 @@ package com.assignment.meteoriteapp.ui.favourite
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.assignment.meteoriteapp.data.Meteor
+import com.assignment.meteoriteapp.testData.Meteor
 import com.assignment.meteoriteapp.network.ResponseState
 import com.assignment.meteoriteapp.ui.base.BaseViewModel
 import com.assignment.meteoriteapp.ui.home.MeteorRepository
@@ -25,7 +25,7 @@ import javax.inject.Inject
 @HiltViewModel
 class FavouriteMeteorViewModel @Inject constructor(
     @ApplicationContext
-    private val application: Context, private val repository: MeteorRepository
+    private val application: Context?, private val repository: MeteorRepository
 ) : BaseViewModel() {
 
     val favouriteMeteorList = MutableLiveData<ResponseState<List<Meteor>>>()

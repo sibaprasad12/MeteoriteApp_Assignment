@@ -1,4 +1,4 @@
-# MeteoriteApp_assignment
+# Meteorite assignment
 
 >> Check the screenshots and GIF image of the app at the bottom of the page
 
@@ -42,6 +42,11 @@ data while using the app.
 - Clean Architecture
 - Dagger Hilt for Dependency Injection
 - Room Database For persistency
+
+## Unit Testing And Instrumentation Testing
+- Written Database test cases
+- Written View Model test cases
+- Written Few UI test cases
 
 ## Libraries used
 - Coroutines - for multi threading

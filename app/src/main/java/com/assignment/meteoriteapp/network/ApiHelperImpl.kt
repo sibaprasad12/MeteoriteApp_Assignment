@@ -7,7 +7,7 @@ package com.assignment.meteoriteapp.network
  * sp.dobest@gmail.com
  */
 
-import com.assignment.meteoriteapp.testData.Meteor
+import com.assignment.meteoriteapp.data.Meteor
 import javax.inject.Inject
 
 class ApiHelperImpl @Inject constructor(private val apiService: ApiService) : ApiHelper {

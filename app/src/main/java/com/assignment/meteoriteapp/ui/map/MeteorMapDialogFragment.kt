@@ -13,7 +13,7 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentActivity
 import com.assignment.meteoriteapp.R
-import com.assignment.meteoriteapp.testData.Meteor
+import com.assignment.meteoriteapp.data.Meteor
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.GoogleMap.MAP_TYPE_NORMAL
 import com.google.android.gms.maps.model.CameraPosition

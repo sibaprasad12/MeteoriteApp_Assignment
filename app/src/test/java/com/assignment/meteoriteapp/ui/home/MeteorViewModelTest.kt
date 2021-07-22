@@ -1,6 +1,6 @@
 package com.assignment.meteoriteapp.ui.home
 
-import com.assignment.meteoriteapp.testData.Meteor
+import com.assignment.meteoriteapp.data.Meteor
 import com.assignment.meteoriteapp.ui.data.TestData
 import io.mockk.mockk
 import kotlinx.coroutines.delay

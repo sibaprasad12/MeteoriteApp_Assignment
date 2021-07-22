@@ -4,8 +4,8 @@ package com.assignment.meteoriteapp.database
 import android.content.Context
 import android.util.Log
 import androidx.room.Room
-import com.assignment.meteoriteapp.testData.Meteor
-import com.assignment.meteoriteapp.testData.TestMeteorData
+import com.assignment.meteoriteapp.data.Meteor
+import com.assignment.meteoriteapp.data.TestMeteorData
 import com.google.common.truth.Truth.assertThat
 import io.mockk.mockk
 import junit.framework.TestCase

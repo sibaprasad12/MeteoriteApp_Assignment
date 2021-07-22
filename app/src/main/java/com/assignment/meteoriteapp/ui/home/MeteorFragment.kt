@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.assignment.meteoriteapp.R
 import com.assignment.meteoriteapp.controllers.OnMeteorClickListener
-import com.assignment.meteoriteapp.testData.Meteor
+import com.assignment.meteoriteapp.data.Meteor
 import com.assignment.meteoriteapp.databinding.FragmentMeteorBinding
 import com.assignment.meteoriteapp.network.Status
 import com.assignment.meteoriteapp.ui.MeteorActivity

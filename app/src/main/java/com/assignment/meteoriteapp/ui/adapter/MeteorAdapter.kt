@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.assignment.meteoriteapp.BR
 import com.assignment.meteoriteapp.controllers.OnMeteorClickListener
-import com.assignment.meteoriteapp.testData.Meteor
+import com.assignment.meteoriteapp.data.Meteor
 import com.assignment.meteoriteapp.databinding.ItemviewMeteorBinding
 
 /**

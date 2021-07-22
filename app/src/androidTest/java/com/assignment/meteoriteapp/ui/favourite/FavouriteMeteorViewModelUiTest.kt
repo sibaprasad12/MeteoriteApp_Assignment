@@ -5,8 +5,8 @@ import android.util.Log
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.assignment.meteoriteapp.testData.Meteor
-import com.assignment.meteoriteapp.testData.TestMeteorData
+import com.assignment.meteoriteapp.data.Meteor
+import com.assignment.meteoriteapp.data.TestMeteorData
 import com.assignment.meteoriteapp.database.AppDatabase
 import com.assignment.meteoriteapp.database.MeteorDao
 import com.google.common.truth.Truth.assertThat

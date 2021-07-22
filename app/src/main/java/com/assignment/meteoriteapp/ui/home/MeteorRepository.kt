@@ -1,6 +1,6 @@
 package com.assignment.meteoriteapp.ui.home
 
-import com.assignment.meteoriteapp.testData.Meteor
+import com.assignment.meteoriteapp.data.Meteor
 import com.assignment.meteoriteapp.database.MeteorDao
 import com.assignment.meteoriteapp.network.ApiHelperImpl
 import javax.inject.Inject

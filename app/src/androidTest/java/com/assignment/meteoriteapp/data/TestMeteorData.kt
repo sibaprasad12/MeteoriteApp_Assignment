@@ -1,4 +1,4 @@
-package com.assignment.meteoriteapp.testData
+package com.assignment.meteoriteapp.data
 
 
 /**

@@ -2,7 +2,7 @@ package com.assignment.meteoriteapp.extra
 
 import android.content.Context
 import androidx.lifecycle.Observer
-import com.assignment.meteoriteapp.testData.Meteor
+import com.assignment.meteoriteapp.data.Meteor
 import com.assignment.meteoriteapp.database.AppDatabase
 import com.assignment.meteoriteapp.network.ApiHelper
 import com.assignment.meteoriteapp.network.ResponseState

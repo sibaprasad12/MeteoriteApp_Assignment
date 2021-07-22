@@ -2,7 +2,7 @@ package com.assignment.meteoriteapp.ui.favourite
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import com.assignment.meteoriteapp.testData.Meteor
+import com.assignment.meteoriteapp.data.Meteor
 import com.assignment.meteoriteapp.ui.data.TestData
 import com.assignment.meteoriteapp.ui.home.MeteorRepository
 import com.assignment.meteoriteapp.ui.home.MeteorViewModel

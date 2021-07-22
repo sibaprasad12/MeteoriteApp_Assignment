@@ -1,6 +1,6 @@
 package com.assignment.meteoriteapp.network
 
-import com.assignment.meteoriteapp.testData.Meteor
+import com.assignment.meteoriteapp.data.Meteor
 import retrofit2.http.GET
 
 /**
